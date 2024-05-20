@@ -1,0 +1,45 @@
+{% extends "base.html" %} 
+
+{% block title %}Edit Profile{% endblock %} 
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Edit Profile</div>
+                    <div class="card-body">
+                        <form method="POST">
+                            {{ form.hidden_tag() }}
+                            <div class="form-group">
+                                <label for="full_name">Full Name:</label>
+                                {{ form.full_name(class="form-control", id="full_name") }}
+                            </div>
+                            <div class="form-group">
+                                <label for="school">School:</label>
+                                {{ form.school(class="form-control", id="school") }}
+                            </div>
+                            <div class="form-group">
+                                <label for="graduation_year">Graduation Year:</label>
+                                {{ form.graduation_year(class="form-control", id="graduation_year") }}
+                            </div>
+                            <div class="form-group">
+                                <label for="bio">Bio:</label>
+                                {{ form.bio(class="form-control", id="bio", rows=5) }}
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+{% endblock %}

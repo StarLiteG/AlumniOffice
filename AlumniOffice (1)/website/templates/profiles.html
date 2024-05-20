@@ -1,0 +1,53 @@
+{% extends "base.html" %} 
+
+{% block title %}Home{% endblock %} 
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Profiles</title>
+    <!-- Add any necessary CSS files or styles here -->
+    <link rel="stylesheet" href="path/to/bootstrap.min.css">
+    <style>
+        /* Add custom styles here */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>List of Profiles</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through profiles and display them -->
+                {% for profile in profiles %}
+                <tr>
+                    <td>{{ profile.id }}</td>
+                    <td>{{ profile.full_name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <a href="{{ url_for('views.edit_profile_admin', profile_id=profile.id) }}" class="btn btn-primary">Edit</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <!-- Button to add new profile -->
+        <a href="{{ url_for('views.create_profile') }}" class="btn btn-success">Add New Profile</a>
+    </div>
+    <!-- Add any necessary JavaScript files or scripts here -->
+    <script src="path/to/jquery.min.js"></script>
+    <script src="path/to/bootstrap.min.js"></script>
+    <script>
+        // Add custom JavaScript here
+    </script>
+</body>
+</html>
+{% endblock %}

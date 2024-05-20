@@ -1,0 +1,93 @@
+{% extends "base.html" %} 
+
+{% block title %}Home{% endblock %} 
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        td {
+            font-size: 16px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .action-column {
+            width: 120px;
+            text-align: center;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div style="margin-bottom: 50px;"></div>
+    <h1>My Profile</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>School</th>
+                <th>Graduation Year</th>
+                <th>Bio</th>
+                <th class="action-column">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ profile.full_name }}</td>
+                <td>{{ profile.school }}</td>
+                <td>{{ profile.graduation_year }}</td>
+                <td>{{ profile.bio }}</td>
+                <td class="action-column">
+                    <a href="{{ url_for('views.edit_profile_admin', profile_id=profile.id) }}" class="btn">Edit</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{{ url_for('views.home') }}" class="btn">Home</a>
+</body>
+</html>
+{% endblock %}

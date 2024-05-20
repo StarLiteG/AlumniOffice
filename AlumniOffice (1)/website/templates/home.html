@@ -1,0 +1,115 @@
+{% extends "base.html" %} 
+
+{% block title %}Home{% endblock %} 
+
+{% block content %}
+    <style>
+        /* Custom styles can be added here */
+        .jumbotron {
+            background-image: url('your-background-image.jpg');
+            background-size: cover;
+            color: #ffffff;
+            padding: 150px 0;
+        }
+        .site-footer {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 50px 0;
+        }
+        .social-links a {
+            color: #ffffff;
+            margin-right: 10px;
+        }
+        .copy {
+            color: #ffffff;
+            margin-top: 20px;
+        }
+    </style>
+
+
+    <section class="jumbotron mb-0 text-center bg-dark text-light">
+        <div class="container">
+            <h1 class="display-4">Welcome to the Alumni Portal</h1>
+            <p class="lead">Connecting alumni with opportunities</p>
+            {% if user.is_authenticated %}
+                <p>Hello, {{ user.username }}!</p>
+                <a class="btn btn-primary btn-lg" href="{{ url_for('views.view_profile') }}" role="button">My Profile</a>
+                {% if user.role == Role.ADMIN %}
+                    <a class="btn btn-success btn-lg" href="{{ url_for('views.list_profiles') }}" role="button">Manage Profiles</a>
+                {% endif %}
+            {% else %}
+                <a class="btn btn-primary btn-lg" href="{{ url_for('auth.login') }}" role="button">Login</a>
+                <a class="btn btn-secondary btn-lg" href="{{ url_for('auth.sign_up') }}" role="button">Sign Up</a>
+            {% endif %}
+        </div>
+    </section>
+
+    <div id="site-content" class="mt-5">
+        <header class="site-header">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4">
+                        <a href="{{ url_for('views.home') }}" id="branding">
+                    
+                        </a> <!-- #branding -->
+                    </div>
+                    <div class="col-lg-8">
+                        <nav class="main-navigation">
+                            <!-- Your navigation content here -->
+                        </nav> <!-- .main-navigation -->
+                    </div>
+                </div> <!-- .row -->
+                <div class="mobile-menu"></div>
+            </div>
+        </header> <!-- .site-header -->
+
+        <div class="container">
+            <!-- Your content here -->
+        </div>
+
+    </div> <!-- #site-content -->
+
+    <footer class="site-footer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Contact us:</h5>
+                    <address>
+                        <p>ATHENS:
+                            13 Kodrigktonos & 94 Patission Ave, 104 34 | 107
+                            Patission Ave & 8 Pellinis, 11251
+                            <br>GLYFADA:
+                            33 Achilleos Street & 65 Vouliagmenis Avenue, 16675
+                            <br>THESSALONIKI:
+                            21 Ionos Dragoumi, 54625
+                            <br><a href="tel:354543543">+30 2108899600 </a>
+                            <br><a href="mailto:info@medcollege.edu.gr">info@medcollege.edu.gr</a>
+                        </p>
+                    </address>
+                </div>
+                <div class="col-md-8">
+                    <form action="#" class="newsletter-form">
+                        <input type="email" class="form-control mb-2" placeholder="Enter your email to join newsletter...">
+                        <button type="submit" class="btn btn-primary mb-2">Subscribe</button>
+                    </form> <!-- .newsletter-form -->
+                </div>
+            </div>
+        </div>
+    </footer> <!-- .site-footer -->
+
+    <!-- Social links -->
+    <div class="social-links">
+        <a href="#"><i class="bi-facebook"></i></a>
+        <a href="#"><i class="bi-twitter"></i></a>
+        <a href="#"><i class="bi-instagram"></i></a>
+        <a href="#"><i class="bi-linkedin"></i></a>
+        <a href="#"><i class="bi-youtube"></i></a>
+    </div> <!-- .social-links -->
+
+    <!-- Copyright notice -->
+    <p class="copy text-center">Copyright 2024 AlumniOffice. All rights reserved.</p>
+
+    <!-- Bootstrap JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+{% endblock %}
